@@ -7,7 +7,7 @@ After=network-online.target
 
 ExecStartPre=/usr/bin/sudo /usr/bin/rm -f /run/gpsd-nmea.sock
 #ExecStart=/bin/sh -c '/usr/bin/gpspipe -r -B 10.0.0.32:2947 | /usr/bin/sudo /usr/bin/socat - UNIX-LISTEN:/run/gpsd-nmea.sock,fork,reuseaddr,mode=666'
-# crx2 apt install websockedd
+# crx2 apt install websocketd
 #ExecStart=websocketd --port=9999 /usr/bin/gpspipe -w -n 0 10.0.0.32:2947
 ExecStart=/bin/sh -c "/usr/bin/gpspipe -r 10.0.0.32:2947 | /usr/bin/socat - UNIX-LISTEN:%t/gpsd-nmea.sock,fork,reuseaddr,mode=666"
 
