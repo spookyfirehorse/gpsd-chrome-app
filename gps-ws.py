@@ -22,49 +22,57 @@ async def gpsd_reader():
             while True:
                 line = await reader.readline()
                 if not line: break
-                data = line.decode().strip()
-                if '"class":"TPV"' in data:
-                    tpv = json.loads(data)
+                
+                # Schneller Check vor dem teuren json.loads
+                if b'"class":"TPV"' in line:
+                    tpv = json.loads(line.decode())
                     if "lat" in tpv and "lon" in tpv:
-                        # GENAUIGKEIT: eph ist der horizontale Fehler
-                        accuracy = max(1.0, float(tpv.get("eph", 10.0)))
-
-                        # HÖHEN-FIX: altMSL (Meereshöhe) zuerst, um die ~44m Abweichung zu korrigieren
-                        # altHAE ist nur der mathematische Fallback
-                        altitude = tpv.get("altMSL") or tpv.get("altHAE") or tpv.get("alt") or 0
-
                         payload = json.dumps({
                             "location": {"lat": tpv["lat"], "lng": tpv["lon"]},
-                            "accuracy": accuracy,
-                            "altitude": altitude,
-                            "altitudeAccuracy": max(1.0, float(tpv.get("epv", 5.0))),
-                            "speed": tpv.get("speed", 0),
-                            "heading": tpv.get("track", 0),
+                            "accuracy": max(1.0, float(tpv.get("eph", 10.0))),
+                            "altitude": tpv.get("altHAE") or tpv.get("alt"),
+                            "speed": tpv.get("speed"),
+                            "heading": tpv.get("track"),
                             "timestamp": time.time()
                         })
 
                         if connected_clients:
-                            # Daten an alle Browser-Extensions (Chromium/Firefox) pushen
-                            await asyncio.gather(*[asyncio.create_task(client.send(payload)) for client in connected_clients], return_exceptions=True)
+                            # Sende an alle, aber ignoriere Fehler einzelner Clients sofort
+                            await asyncio.gather(
+                                *[asyncio.create_task(client.send(payload)) for client in connected_clients], 
+                                return_exceptions=True
+                            )
         except Exception as e:
             print(f"GPSD-Fehler: {e}. Neustart in 5s...")
             await asyncio.sleep(5)
 
 async def ws_handler(websocket):
     connected_clients.add(websocket)
-    print(f"Extension verbunden. Clients: {len(connected_clients)}")
+    print(f"Client verbunden. Gesamt: {len(connected_clients)}")
     try:
+        # keep_alive_timeout verhindert, dass "tote" Leichen die Liste füllen
         async for message in websocket:
-            pass
+            pass 
+    except websockets.exceptions.ConnectionClosed:
+        pass
     finally:
         connected_clients.discard(websocket)
-        print(f"Extension getrennt. Clients: {len(connected_clients)}")
+        print(f"Client getrennt. Verbleibend: {len(connected_clients)}")
 
 async def main():
+    # Starte den GPSD-Reader im Hintergrund
     asyncio.create_task(gpsd_reader())
-    print(f"WebSocket-Proxy aktiv auf ws://{LISTEN_HOST}:{LISTEN_PORT}")
-    async with websockets.serve(ws_handler, LISTEN_HOST, LISTEN_PORT):
-        await asyncio.Future()
+    
+    # Websocket Server mit Pings (wichtig für Stabilität)
+    async with websockets.serve(
+        ws_handler, 
+        LISTEN_HOST, 
+        LISTEN_PORT,
+        ping_interval=10, # Prüft alle 10 Sek, ob Client noch da
+        ping_timeout=5    # Wartet 5 Sek auf Antwort
+    ):
+        print(f"WebSocket-Proxy aktiv auf ws://{LISTEN_HOST}:{LISTEN_PORT}")
+        await asyncio.Future() # Run forever
 
 if __name__ == "__main__":
     try:
