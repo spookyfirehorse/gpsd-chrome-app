@@ -1,4 +1,4 @@
-# GPSD to Google Chrome Geolocation Bridge
+markdown# GPSD to Google Chrome Geolocation Bridge
 
 A lightweight, high-precision solution to feed Google Chrome's native Geolocation API (`navigator.geolocation`) with real hardware data from `gpsd`. 
 
@@ -14,7 +14,7 @@ Perfect for web developers testing location-aware apps, marine/outdoor enthusias
 
 ## Architecture
 
-
+Verwende Code mit Vorsicht.GPS Hardware ➔ GPSD (Port 2947) ➔ Python Proxy (Filters & WebSocket) ➔ Chrome Extension ➔ Web Page
 ---
 
 ## Installation & Setup
