@@ -63,9 +63,6 @@ I love building lightweight, clever software tools that connect hardware with mo
 
 Your support helps me maintain the project, update it for future browser versions, and buy a coffee to fuel late-night coding sessions! Thank you so much for your contribution.
 
-[![Buy Me A Coffee](https://buymeacoffee.com)](https://buymeacoffee.com)
-
----
 
 ## Support this Project
 
@@ -76,3 +73,12 @@ If this tool saved you time or solved your GPS routing problems in Chrome, feel 
     <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://buymeacoffee.com" title="Scan to buy me a coffee" />
   </a>
 </p>
+
+
+---
+
+## Support this Project
+
+If this tool saved you time or solved your GPS routing problems in Chrome, feel free to buy me a coffee! ☕
+
+[![Scan QR Code](https://api.qrserver.com)](https://buymeacoffee.com)
