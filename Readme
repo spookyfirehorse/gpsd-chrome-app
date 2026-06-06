@@ -64,21 +64,12 @@ I love building lightweight, clever software tools that connect hardware with mo
 Your support helps me maintain the project, update it for future browser versions, and buy a coffee to fuel late-night coding sessions! Thank you so much for your contribution.
 
 
-
----
-
 ## Support this Project
 
 If this tool saved you time or solved your GPS routing problems in Chrome, feel free to buy me a coffee! ☕
 
-<p>
-  <strong>Scan via Smartphone:</strong>
-  <br />
-  <img src="bmc_qr.png" width="180" alt="QR Code" />
-</p>
+### Scan via Smartphone:
+![QR Code](bmc_qr.png)
 
-<p>
-  <strong>Click via Browser:</strong>
-  <br />
-  <a href="https://buymeacoffee.com" target="_blank">👉 Click here to support on Buy Me A Coffee</a>
-</p>
+### Click via Browser:
+[👉 Click here to support on Buy Me A Coffee](https://buymeacoffee.com)
