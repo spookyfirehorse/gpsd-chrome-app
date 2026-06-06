@@ -50,5 +50,29 @@ Click the new extension icon in your Chrome toolbar. It will display a badge sta
 ---
 
 ## Technology Stack
+
+
+Hi, I'm the creator of the GPSD to Google Chrome Geolocation Bridge. 
+
+I love building lightweight, clever software tools that connect hardware with modern web technology. My open-source projects bridge the gap between Linux system services (like gpsd) and the browser, helping web developers test location-aware apps and protecting user privacy.
+
+Your support helps me maintain the project, update it for future browser versions, and buy a coffee to fuel late-night coding sessions! Thank you so much for your contribution.
+
 * **Backend**: Python (`asyncio`, `websockets`)
 * **Frontend**: JavaScript (Manifest V3, Main World Scripting Injection)
+
+
+[![Buy Me A Coffee](https://shields.io)](https://www.buymeacoffee.com/tommyfeelgood)
+
+---
+---
+
+## Support this Project
+
+If this tool saved you time or solved your GPS routing problems in Chrome, feel free to buy me a coffee! ☕
+
+<p align="left">
+  <a href="https://buymeacoffee.com">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://buymeacoffee.com" title="Scan to buy me a coffee" />
+  </a>
+</p>
