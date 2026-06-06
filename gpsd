@@ -1,7 +1,0 @@
-START_DAEMON="true"
-USBAUTO="false"
-# Use your network source
-DEVICES="gpsd://10.0.0.32:2947"
-GPSD_OPTIONS="-G -n"
-GPSD_SOCKET="/var/run/gpsd.sock"
-
