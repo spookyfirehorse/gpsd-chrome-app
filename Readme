@@ -1,4 +1,4 @@
-markdown# GPSD to Google Chrome Geolocation Bridge
+# GPSD to Google Chrome Geolocation Bridge
 
 A lightweight, high-precision solution to feed Google Chrome's native Geolocation API (`navigator.geolocation`) with real hardware data from `gpsd`. 
 
@@ -14,7 +14,7 @@ Perfect for web developers testing location-aware apps, marine/outdoor enthusias
 
 ## Architecture
 
-Verwende Code mit Vorsicht.GPS Hardware ➔ GPSD (Port 2947) ➔ Python Proxy (Filters & WebSocket) ➔ Chrome Extension ➔ Web Page
+
 ---
 
 ## Installation & Setup
@@ -63,24 +63,12 @@ I love building lightweight, clever software tools that connect hardware with mo
 
 Your support helps me maintain the project, update it for future browser versions, and buy a coffee to fuel late-night coding sessions! Thank you so much for your contribution.
 
+---
 
 ## Support this Project
 
 If this tool saved you time or solved your GPS routing problems in Chrome, feel free to buy me a coffee! ☕
 
-# GPSD to Google Chrome Geolocation Bridge
+[![Scan QR Code](bmc_qr.png)](https://buymeacoffee.com)
 
-A lightweight, high-precision solution to feed Google Chrome's native Geolocation API (`navigator.geolocation`) with real hardware data from `gpsd`. 
-
-Perfect for web developers testing location-aware apps, marine/outdoor enthusiasts using browser dashboards, and privacy protection.
-
-## Key Features
-* **Real Hardware Sync**: Bridges the gap between Linux system level (`gpsd`) and the browser environment.
-* **Smart Filtering**: Eliminates static "GPS drift" and jumps when stationary using an Exponential Moving Average (EMA) filter.
-* **Anti-Detection Jitter**: Adds an organic, micro-fluctuation to coordinates so anti-fraud scripts cannot detect location spoofing.
-* **Main World Injection**: Bypasses Chrome's Manifest V3 isolation barriers to completely override `watchPosition` and `getCurrentPosition`.
-
----
-
-## Architecture
-
+[👉 Click here to support on Buy Me A Coffee](https://buymeacoffee.com)
