@@ -71,17 +71,14 @@ Your support helps me maintain the project, update it for future browser version
 
 If this tool saved you time or solved your GPS routing problems in Chrome, feel free to buy me a coffee! ☕
 
-<table>
-  <tr>
-    <td align="center" valign="middle">
-      <a href="https://buymeacoffee.com" target="_blank">
-        <img src="bmc_qr.png" width="180" alt="Scan QR Code" title="Click or scan to buy me a coffee!" />
-      </a>
-      <br />
-      <br />
-      <a href="https://buymeacoffee.com" target="_blank">
-        <strong>👉 Click here to support on Buy Me A Coffee</strong>
-      </a>
-    </td>
-  </tr>
-</table>
+<p>
+  <strong>Scan via Smartphone:</strong>
+  <br />
+  <img src="bmc_qr.png" width="180" alt="QR Code" />
+</p>
+
+<p>
+  <strong>Click via Browser:</strong>
+  <br />
+  <a href="https://buymeacoffee.com" target="_blank">👉 Click here to support on Buy Me A Coffee</a>
+</p>
