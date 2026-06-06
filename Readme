@@ -1,16 +1,54 @@
-install gpsd and geoclue
+# GPSD to Google Chrome Geolocation Bridge
 
-gpsd must running on 127.0.0.1
+A lightweight, high-precision solution to feed Google Chrome's native Geolocation API (`navigator.geolocation`) with real hardware data from `gpsd`. 
 
-this is normal when you plugin a usb device or connect the gpsd  to a gpsd server
+Perfect for web developers testing location-aware apps, marine/outdoor enthusiasts using browser dashboards, and privacy protection.
+
+## Key Features
+* **Real Hardware Sync**: Bridges the gap between Linux system level (`gpsd`) and the browser environment.
+* **Smart Filtering**: Eliminates static "GPS drift" and jumps when stationary using an Exponential Moving Average (EMA) filter.
+* **Anti-Detection Jitter**: Adds an organic, micro-fluctuation to coordinates so anti-fraud scripts cannot detect location spoofing.
+* **Main World Injection**: Bypasses Chrome's Manifest V3 isolation barriers to completely override `watchPosition` and `getCurrentPosition`.
+
+---
+
+## Architecture
 
 
-git clone https://github.com/spookyfirehorse/gpsd-chrome-polyfill-master.git
+GPS Hardware ➔ GPSD (Port 2947) ➔ Python Proxy (Filters & WebSocket) ➔ Chrome Extension ➔ Web Page
+---
 
-cd gpsd-chrome-polyfill-master
+## Installation & Setup
 
-python3 gps-ws.py &
+### 1. Prerequisites
+Ensure `gpsd` is installed and running on your machine. 
+* Local USB device: `gpsd` automatically binds to `127.0.0.1`.
+* Remote GPSD Server: Forward the remote data to your local machine using:
+  ```bash
+  gpsd -N gpsd://<your-remote-ip>:2947
+  ```
 
-go in chrome to developer tools  (  search in the directory the folder crx inside pollyfill ) install it
+### 2. Run the Python Proxy Server
+Clone this repository, install the dependencies, and start the WebSocket server:
+```bash
+git clone https://github.com
+cd gpsd-chrome-app
+pip install -r requirements.txt
+python3 gps-ws.py
+```
+The server will start listening for Chrome Extension connections on `ws://127.0.0.1:9999`.
 
-klick on the symbol in the taskbar 
+### 3. Install the Chrome Extension
+1. Open Google Chrome and navigate to `chrome://extensions/`.
+2. Enable **Developer mode** (toggle switch in the top-right corner).
+3. Click **Load unpacked** (top-left button).
+4. Select the `crx` folder inside the cloned `gpsd-chrome-app` directory.
+
+### 4. Start Tracking
+Click the new extension icon in your Chrome toolbar. It will display a badge status (`ON` in green when successfully connected to the Python backend, or `ERR` in red if the connection fails). Open any mapping website (like Google Maps) and allow location access.
+
+---
+
+## Technology Stack
+* **Backend**: Python (`asyncio`, `websockets`)
+* **Frontend**: JavaScript (Manifest V3, Main World Scripting Injection)
