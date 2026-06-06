@@ -14,7 +14,7 @@ Perfect for web developers testing location-aware apps, marine/outdoor enthusias
 
 ## Architecture
 
-Verwende Code mit Vorsicht.GPS Hardware ➔ GPSD (Port 2947) ➔ Python Proxy (Filters & WebSocket) ➔ Chrome Extension ➔ Web Page
+GPS Hardware ➔ GPSD (Port 2947) ➔ Python Proxy (Filters & WebSocket) ➔ Chrome Extension ➔ Web Page
 ---
 
 ## Installation & Setup
