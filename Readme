@@ -72,7 +72,7 @@ Your support helps me maintain the project, update it for future browser version
 If this tool saved you time or solved your GPS routing problems in Chrome, feel free to buy me a coffee! ☕
 
 <p align="left">
-  <a href="https://www.buymeacoffee.com/tommyfeelgood">
-    <img src="https://qrserver.com" title="Scan to buy me a coffee" />
+  <a href="https://buymeacoffee.com">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://buymeacoffee.com" title="Scan to buy me a coffee" />
   </a>
 </p>
