@@ -31,7 +31,7 @@ Ensure `gpsd` is installed and running on your machine.
 ### 2. Run the Python Proxy Server
 Clone this repository, install the dependencies, and start the WebSocket server:
 ```bash
-git clone https://github.com
+git clone https://github.com/spookyfirehorse/gpsd-chrome-app.git
 cd gpsd-chrome-app
 pip install -r requirements.txt
 python3 gps-ws.py
